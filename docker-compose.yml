@@ -1,0 +1,40 @@
+version: '3'
+services:
+  modbus_server1:
+    build:
+      context: .
+      dockerfile: server1
+    expose:
+      - 502
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.10
+
+  modbus_server2:
+    build:
+      context: .
+      dockerfile: server1
+    expose:
+      - 502
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.11
+
+  modbus_client:
+    build: 
+      context: .
+      dockerfile: client
+    expose:
+      - 502
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.12
+
+networks:
+  app_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.238.0/24
+
