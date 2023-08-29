@@ -74,7 +74,7 @@ async def run_async_server():
    
     queue = asyncio.Queue()
     block = CallbackDataBlock(queue, 0x00, [0] * 100)
-    block.setValues(1, 15)
+    #block.setValues(1, 15)
     store = ModbusSlaveContext(di=block, co=block, hr=block, ir=block)
     context = ModbusServerContext(slaves=store, single=True)
     server = await StartAsyncTcpServer(
