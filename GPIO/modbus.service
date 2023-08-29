@@ -1,0 +1,19 @@
+[Unit]
+
+Description=Modbus service
+After=Network.target
+
+
+
+[Service]
+
+ExecStart=/usr/bin/python3 /home/pi/Modbus/server.py
+Restart=always
+User=root
+
+
+
+[Install]
+WantedBy=multi-user.target
+
+
